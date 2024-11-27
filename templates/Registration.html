@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/Login-Registration.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/Shared.css')}}"/>
+
+</head>
+
+<body>
+	<div id="Login-Registration-contents">
+	<span id="welcome-message">Welcome</span>
+    <span></span>
+
+   <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="login-logo" alt="logo" >
+
+   <p> Already have an account? <a href="{{url_for('auth.login')}}">Login here</a></p>
+
+   <h3 class="heading">Register</h3>
+
+<form id="Registration-form" action="{{url_for('auth.register')}}" method="POST">
+    
+    <span class="response-failure"></span>
+
+    <label class="login-labels" id="firstname-label" for="firstname">First name</label>
+   <input type="text" id="firstname" name="firstname" class="login-textfields form-control" required>
+
+    <label class="login-labels" id="surname-label" for="surname">Surname</label>
+   <input type="text" id="surname" name="surname" class="login-textfields form-control" required>
+
+   <label class="login-labels" id="username-label" for="username">Username</label><span class="error"></span>
+   <span class="error" id="username-error" ></span>
+   <input type="text" id="username" name="username" class="login-textfields form-control" required>
+
+    <label class="login-labels" id="cell-number-label" for="cellnumber">Contact number</label>
+    <span class="error" id="cellnumber-error"></span>
+   <input type="text" id="cellnumber" name="cellnumber" class="login-textfields form-control" required>
+
+    <label class="login-labels" id="email-label" for="email">Email</label>
+    <span id="email-error" class="error"></span>
+   <input type="email" id="email" name="email" class="login-textfields form-control" required>
+
+   <label class="login-labels" id="password-label" for="password">Password</label>
+   <span id="password-error" class="error"></span>
+   <input type="password"  id="password" name="password" class="login-textfields form-control" required>
+
+   <button class="bottom-square-buttons" id="login-button" type="submit">Register</button>
+   
+   </form>	
+</div>
+    <script>
+     document.addEventListener("DOMContentLoaded", function() {
+                var form = document.getElementById("Registration-form");
+                form.reset();
+            });
+    </script>
+    
+      <script src="{{ url_for('static', filename='JavaScript/Registration.js')}}" defer></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

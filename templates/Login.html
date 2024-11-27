@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/Shared.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/Login-Registration.css')}}"/>
+   </head>
+
+<body>
+	<div id="Login-Registration-contents">
+	<span id="welcome-message">Welcome Back</span>
+    <span></span>
+
+   <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="login-logo" alt="logo" >
+
+    <p> Don't have an account? <a href="{{url_for('auth.register')}}">Register here</a></p>
+
+
+   <h3 class="heading">Login</h3>
+
+   {% with messages = get_flashed_messages( with_categories=true) %}
+   {% if messages %}
+   <div class="flash-messages">
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-custom alert-dismissible fade show" role="alert"> 
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+    </button>
+    </div> 
+    {% endfor%}
+   </div>
+   {% endif %}
+   {% endwith %}
+
+<form id="login-form" action="{{url_for('auth.login_post')}}" method="POST">
+   
+   <label class="login-labels" id="username-label" for="username">Username</label>
+   <input type="text" name="username" class="login-textfields form-control" required>
+
+   <label class="login-labels" id="password-label" for="password">Password</label>
+   <input type="password" name="password" class="login-textfields form-control" required>
+
+   <button class="bottom-square-buttons" id="login-button" type="submit">Login</button>
+</form>
+   
+   <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var form = document.getElementById("login-form");
+                form.reset();
+            });
+        </script>
+
+        
+   <script src="{{ url_for('static', filename='JavaScript/Login.js')}}" defer></script>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Confirmation.css') }}">
+    <!-- Linking Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Linking JavaScript -->
+    <script src="{{ url_for('static', filename='JavaScript/Shared.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='JavaScript/Confirmation.js')}}" defer></script>
+
+</head>
+
+<body class="container">
+    <div class="header">
+        <!--Hamburger Menu-->
+         <!--Hamburger Menu-->
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+        <i class="fas fa-bars"></i> 
+        </button>
+
+        <nav id="sidebar-menu" class="sidebar-menu">
+            <button class="close-button" aria-label="Close menu">&times;
+            </button>
+            <ul> 
+                <li><a href="{{url_for('auth.account')}}">Account</a></li>
+                <li><a href="{{url_for('auth.home')}}">Home</a></li>
+                <li><a href="{{url_for('auth.report')}}">Report</a></li>
+                <li><a href="{{url_for('auth.popup')}}">Notifications</a></li>
+                <li><a href="{{url_for('auth.emergency')}}">Helplines</a></li>
+                <li><a href="{{url_for('auth.about')}}">About Us</a></li>
+                <li><a href="{{url_for('auth.userfeed')}}">Reviews</a></li>
+                <li><a href="{{url_for('auth.feedback')}}">Feedback</a><li>
+
+            </ul>
+            {% if session.get("username")%}
+           <a href="{{url_for('auth.logout')}}">Logout</a>
+            {% endif%}
+        </nav>
+        <!--Logo-->
+        <a href="{{url_for('auth.home')}}">
+        <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="header-logo" alt="logo" >
+        </a>
+    </div>
+
+<div id="report-details">
+
+    <h1>REPORT CONFIRMATION</h1>
+
+    <div>
+        <h2>Crime Type:</h2>
+        <p id="crime_type">N/A</p>
+    </div>
+
+    <div>
+        <h2>Crime Date:</h2>
+        <p id="crime-date">N/A</p>
+    </div>
+
+    <div>
+        <h2>Description:</h2>
+        <p id="description">N/A</p>
+    </div>
+
+    <div>
+        <h2>Location:</h2>
+        <p id="location"></p>
+    </div>
+
+    <h3 id="media-container">UPLOADED MEDIA</h3>
+    <div>
+        <h2>Image:</h2>
+        <div id="images"></div>
+    </div>
+
+    <div>
+        <h2>Video:</h2>
+        <div id="videos"> </div>
+    </div>
+
+</div>
+		
+    <div class="bottom-buttons">
+            <button class="bottom-square-buttons"id="confirm-button" onclick="confirmReport()">Confirm</button>
+            <a href="{{url_for('auth.report')}}">
+            <button class="bottom-square-buttons" id="edit-button">Edit</button>
+            </a>
+    </div>
+		
+    <div class ="footer-buttons">
+            <a href="{{url_for('auth.home')}}">
+            <button class="bottom-round-buttons" id="home-button"><i class="fas fa-home"></i></button>
+            </a>
+            <button class="bottom-round-buttons" id="refresh-button"><i class="fas fa-sync-alt"></i></button>
+    </div>
+
+</body>
+</html>

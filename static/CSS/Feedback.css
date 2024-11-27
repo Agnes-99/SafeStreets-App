@@ -1,0 +1,66 @@
+
+
+
+.container {
+	padding: 50px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    
+}
+
+.section {
+	margin-bottom: 20px;
+}
+
+.stars {
+	display: flex;
+    gap: 5px;
+}
+
+.star {
+	font-size: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.star.active {
+	color: #f39c12;
+}
+
+textarea {
+	
+    width: 100%;
+    height: 80PX;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.button {
+	background-color: #f39c12;
+    border: none;
+    color: #FFFFFF;
+    padding: 10px 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button .Enter {
+	margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+

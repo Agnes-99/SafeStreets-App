@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/dashboard.css') }}">
+    <script src="{{ url_for('static', filename='JavaScript/Shared.js') }}" defer></script>
+</head>
+<body>
+   <div class="header">
+        <!--Hamburger Menu-->
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+        <i class="fas fa-bars"></i> 
+        </button>
+
+        <nav id="sidebar-menu" class="sidebar-menu">
+            <button class="close-button" aria-label="Close menu">&times;
+            </button>
+            <ul> 
+                <li><a href="{{url_for('auth.account')}}">Account</a></li>
+                <li><a href="{{url_for('auth.home')}}">Home</a></li>
+                <li><a href="{{url_for('auth.report')}}">Report</a></li>
+                <li><a href="{{url_for('auth.popup')}}">Notifications</a></li>
+                <li><a href="{{url_for('auth.emergency')}}">Helplines</a></li>
+                <li><a href="{{url_for('auth.about')}}">About Us</a></li>
+                <li><a href="{{url_for('auth.userfeed')}}">Userfeed</a></li>
+                <li><a href="{{url_for('auth.feedback')}}">Feedback</a><li>
+
+            </ul>
+            {% if session.get("username")%}
+           <a href="{{url_for('auth.logout')}}">Logout</a>
+            {% endif%}
+        </nav>
+        <!--Logo-->
+        <a href="{{url_for('auth.home')}}">
+        <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="header-logo" alt="logo" >
+        </a>
+    </div>
+    <div class="container">
+        <h1>Welcome to the Crime Reporting Dashboard</h1>
+        <iframe src="{{ url_for('auth.dashboard') }}" width="100%" height="600" frameborder="0"></iframe>
+        <div id="map"></div>
+    </div>
+
+</body>
+</html>

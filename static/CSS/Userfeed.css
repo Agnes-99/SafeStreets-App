@@ -1,0 +1,95 @@
+
+.container {
+    padding: 30px;
+    max-width: 600px;
+    margin: 20px auto;
+    background: #ffffff; 
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #f39c12; 
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em; 
+}
+
+
+.post, .comment {
+    background: #ffffff; 
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.post:hover, .comment:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.post_form {
+    background: #f9f9f9; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #1e2942; 
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s; 
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #007bff; 
+    outline: none; 
+}
+
+button {
+    background-color: #f39c12; 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, transform 0.2s; 
+}
+
+button:hover {
+    transform: translateY(-2px); 
+}
+
+h3 {
+    color: #333;
+    margin: 0 0 10px; 
+}
+p{
+    color: #333;
+}
+.datetime{
+    font-size:x-small;
+    color: grey;
+    margin-left: 10px;
+}
+.post_text{
+    padding: 30px;
+   font-family: 'Times New Roman', Times, serif; 
+}
+.comment-names{
+    font-size: smaller;
+    font-weight: bold;
+}
+span{
+    color: #0b0b0b;
+    font-weight: lighter;
+}

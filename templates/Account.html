@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Account.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Shared.css') }}">
+    <!-- Linking JavaScript -->
+    <script src="{{ url_for('static', filename='JavaScript/Shared.js') }}" defer></script>
+</head>
+<body>
+    <div class="header">
+        <!--Hamburger Menu-->
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+        <i class="fas fa-bars"></i> 
+        </button>
+
+        <nav id="sidebar-menu" class="sidebar-menu">
+            <button class="close-button" aria-label="Close menu">&times;
+            </button>
+            <ul> 
+                <li><a href="{{url_for('auth.account')}}">Account</a></li>
+                <li><a href="{{url_for('auth.home')}}">Home</a></li>
+                <li><a href="{{url_for('auth.report')}}">Report</a></li>
+                <li><a href="{{url_for('auth.popup')}}">Notifications</a></li>
+                <li><a href="{{url_for('auth.emergency')}}">Helplines</a></li>
+                <li><a href="{{url_for('auth.about')}}">About Us</a></li>
+                <li><a href="{{url_for('auth.userfeed')}}">Userfeed</a></li>
+                <li><a href="{{url_for('auth.feedback')}}">Feedback</a><li>
+
+            </ul>
+            {% if session.get("username")%}
+           <a href="{{url_for('auth.logout')}}">Logout</a>
+            {% endif%}
+        </nav>
+        <!--Logo-->
+        <a href="{{url_for('auth.home')}}">
+        <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="header-logo" alt="logo" >
+        </a>
+    </div>
+
+     <div id="container">
+
+        <div class="profile-header">
+            <i class="fas fa-user-circle" id= "user-icon"></i> 
+            <p id="user-name">{{ user['username']}}</p>
+        </div>
+
+     <section class="personal-info">
+        <p class="section-title">Personal Information:</p>
+
+        <div class="info-item">
+            <i class="fas fa-user info-icon"></i> 
+            <input class="user-details" id="firstname" type="text" value="{{user['firstname']}}" readonly>
+        </div>
+
+        
+        <div class="info-item">
+            <i class="fas fa-user-tag info-icon"></i> 
+            <input class="user-details" id="surname" type="text" value="{{user['surname']}}" readonly>
+       </div>
+        
+        <div class="info-item">
+        <i class="fas fa-phone info-icon"></i>
+        <input class="user-details" id="phone-number" type="text" value="{{user['cellnumber']}}" readonly>
+        </div>
+    
+        <div class="info-item">
+        <i class="fas fa-envelope info-icon"></i>
+        <input class="user-details" id="email-address" type="text" value="{{user['email']}}" readonly>
+        </div>
+    </section>  
+
+    <section class="report-section">
+        <p class="section-title">Reports:</p>
+        <div class="dropdown-content">
+            {% if reports %}
+                <div id="crime-details">
+                    {% for report in reports %}
+                        <div class="crime-details-item">
+
+                            <div class="info-row">
+                                <span class="info-label"> Date/Time Reported:</span>
+                                <span class="info-value">{{ report['report_date'] }}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Case No:</span>
+                                <span class="info-value">{{ report['report_id'] }}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Crime Type:</span>
+                                <span class="info-value">{{ report['crime_type'] }}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label"> Date/Time of occurence:</span>
+                                <span class="info-value">{{ report['timing'] }}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Status:</span>
+                                <span class="info-value">{{ report['crime_status'] }}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Location Latitude:</span>
+                                <span class="info-value">{{ report['latitude'] }}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Location Longitude:</span>
+                                <span class="info-value">{{ report['longitude'] }}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Description:</span>
+                                <span class="info-value">{{ report['description'] }}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Media Upload:</span>
+                                <span class="info-value">
+                                    {% if report['images'] ==1 %}
+                                        Images: <i class="fas fa-check-circle" style="color:green"></i>
+                                    {% else %}
+                                        Images: <i class="fas fa-times-circle" style="color: red;"></i>
+                                    {% endif %}
+                                    
+                                    {% if report['videos'] ==1%}
+                                        Videos: <i class="fas fa-check-circle" style="color: green;"></i>
+                                    {% else %}
+                                        Videos: <i class="fas fa-times-circle" style="color: red;"></i>
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h4>No reported crimes.</h4>
+            {% endif %}
+        </div>
+    </section>
+</div>
+		
+
+</body>
+</html>

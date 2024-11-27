@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='CSS/Shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Final.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{{ url_for('static', filename='JavaScript/Shared.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='JavaScript/Final.js') }}" defer></script>
+</body>
+
+</head>
+<body>
+	<div class="header">
+         <!--Hamburger Menu-->
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+        <i class="fas fa-bars"></i> 
+        </button>
+
+        <nav id="sidebar-menu" class="sidebar-menu">
+            <button class="close-button" aria-label="Close menu">&times;
+            </button>
+            <ul> 
+                <li><a href="{{url_for('auth.account')}}">Account</a></li>
+                <li><a href="{{url_for('auth.home')}}">Home</a></li>
+                <li><a href="{{url_for('auth.report')}}">Report</a></li>
+                <li><a href="{{url_for('auth.popup')}}">Notifications</a></li>
+                <li><a href="{{url_for('auth.emergency')}}">Helplines</a></li>
+                <li><a href="{{url_for('auth.about')}}">About Us</a></li>
+                 <li><a href="{{url_for('auth.userfeed')}}">Userfeed</a></li>
+                <li><a href="{{url_for('auth.userfeed')}}">Feedback</a></li>
+            </ul>
+            {% if session.get("username")%}
+           <a href="{{url_for('auth.logout')}}">Logout</a>
+            {% endif%}
+        </nav>
+        <!--Logo-->
+        <a href="{{url_for('auth.home')}}">
+        <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="header-logo" alt="logo" >
+        </a>
+    </div>
+		
+		<div class="final-content">
+			<h1>Thank you for keeping our
+				streets safe</h1>
+		</div>
+				
+		<div class="icon-container">
+			<i class="fa-solid fa-user-secret"></i>
+		</div>
+    <div id="success-message" class="final-content">
+        <p>Your report has been successfully logged.</p>
+        <p id="case-number">Case Number: <span id="report-id"></span></p>
+    </div>
+
+		<a href="{{url_for('auth.userfeed')}}">
+		<div class="bottom-buttons">
+			<button class="bottom-square-buttons" id="rate-button">Connect with others</button>
+		</div>
+	    </a>
+		
+        <a href="#">
+        <div class="bottom-buttons">
+            <button class="bottom-square-buttons" id="rate-button">Rate</button>
+        </div>
+        </a>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='CSS/Shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Userfeed.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{{ url_for('static', filename='JavaScript/Userfeed.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='JavaScript/Shared.js') }}" defer></script>
+</head>
+
+<body>
+    
+	<div class="header">
+        <!--Hamburger Menu-->
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+        <i class="fas fa-bars"></i> 
+        </button>
+
+        <nav id="sidebar-menu" class="sidebar-menu">
+            <button class="close-button" aria-label="Close menu">&times;
+            </button>
+            <ul> 
+                <li><a href="{{url_for('auth.account')}}">Account</a></li>
+                <li><a href="{{url_for('auth.home')}}">Home</a></li>
+                <li><a href="{{url_for('auth.report')}}">Report</a></li>
+                <li><a href="{{url_for('auth.popup')}}">Notifications</a></li>
+                <li><a href="{{url_for('auth.emergency')}}">Helplines</a></li>
+                <li><a href="{{url_for('auth.about')}}">About Us</a></li>
+                <li><a href="{{url_for('auth.userfeed')}}">Userfeed</a></li>
+                <li><a href="{{url_for('auth.feedback')}}">Feedback</a><li>
+
+            </ul>
+            {% if session.get("username")%}
+           <a href="{{url_for('auth.logout')}}">Logout</a>
+            {% endif%}
+        </nav>
+        <!--Logo-->
+        <a href="{{url_for('auth.home')}}">
+        <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="header-logo" alt="logo" >
+        </a>
+    </div>
+		
+    <div class="container">
+       
+        <h1>User Feed</h1>
+        <form action ="/submit_post" method="POST" class ="post_form">
+            <h3>{{username}}</h3>
+            <textarea name ="post_text" placeholder="What's on your mind?" required></textarea>
+            <button type="submit">Post</button>
+        </form>
+       
+    {% if posts %}
+        {% for post in posts%}
+            <div class="post">
+                <h3 class="username">{{post[1]}}</h3>
+                <p class="datetime">{{post[4]}}<p/>
+                <p class="post_text">{{post[2]}}</p>
+                
+                <form action="{{url_for('auth.like_post', post_id=post[0])}}" method ="POST">
+                    <button type="submit" class="like-button">
+                    <i class="fas fa-heart"></i> {{post[3]}}
+                    </button>
+                </form>
+                
+                {% if post[1] == username %}
+                <form action ="{{url_for('auth.delete_post', post_id=post[0])}}" method="POST" style ="display:inline;">
+                    <button type="submit" class="delete-button"><i class="fas fa-trash"></i></i></button>
+                </form>
+                {% endif%}
+
+                <div class="comments-section">
+                    <button class="toggle-comments" onclick ="toggleComments('{{post[0]}}')">
+                        <i class="fas fa-comment" class="comment-button"></i> 
+                    </button>
+
+                    <div class="comments" id="comments-{{post[0]}}" style="display:none;">
+                    <h4>Comments:</h4>
+                    {% for comment in comments %}
+                        {% if comment[1] == post[0] %}
+                        <div class ="comment">
+                        <p class="comment-names">{{comment[2]}} <span class="post_text">{{comment[3]}}</span></p>
+                        {% if comment[2] == username or post[1] == username %}
+                        <form action ="{{url_for('auth.delete_comment', comment_id=comment[0])}}" method="POST" style ="display:inline;">
+                            <button type="submit" class="delete-button"><i class="fas fa-trash"></i></button>
+                        </form>
+                        {% endif %}
+                        </div>
+                        {% endif%}
+                    {% endfor%}
+                
+               
+                <form action="/submit_comment" method="POST">
+                    <input type="hidden" name="post_id" value="{{post[0]}}">
+                    <input type="hidden" name="username" value="{{username}}">
+                    <textarea name="comment_text" placeholder="Leave a comment..." required></textarea>
+                    <button type="submit">Comment</button>
+                </form>
+            </div>
+            </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>No posts available. Be the first to create a post!</p>
+        {% endif %}
+    
+        <div class ="footer-buttons">
+            <a href="{{url_for('auth.home')}}">
+            <button class="bottom-round-buttons" id="home-button"><i class="fas fa-home"></i></button>
+            </a>
+            <button class="bottom-round-buttons" id="refresh-button"><i class="fas fa-sync-alt"></i></button>
+        </div>
+	</div>
+</body>
+</html>

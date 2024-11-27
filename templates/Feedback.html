@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='CSS/Shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Feedback.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{{ url_for('static', filename='JavaScript/Feedback_page.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='JavaScript/Shared.js') }}" defer></script>
+</head>
+
+<body>
+    
+	<div class="header">
+        <!--Hamburger Menu-->
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+        <i class="fas fa-bars"></i> 
+        </button>
+
+        <nav id="sidebar-menu" class="sidebar-menu">
+            <button class="close-button" aria-label="Close menu">&times;
+            </button>
+            <ul> 
+                <li><a href="{{url_for('auth.account')}}">Account</a></li>
+                <li><a href="{{url_for('auth.home')}}">Home</a></li>
+                <li><a href="{{url_for('auth.report')}}">Report</a></li>
+                <li><a href="{{url_for('auth.popup')}}">Notifications</a></li>
+                <li><a href="{{url_for('auth.emergency')}}">Helplines</a></li>
+                <li><a href="{{url_for('auth.about')}}">About Us</a></li>
+                <li><a href="{{url_for('auth.userfeed')}}">Userfeed</a></li>
+                <li><a href="{{url_for('auth.feedback')}}">Feedback</a><li>
+            </ul>
+            {% if session.get("username")%}
+           <a href="{{url_for('auth.logout')}}">Logout</a>
+            {% endif%}
+        </nav>
+        <!--Logo-->
+        <a href="{{url_for('auth.home')}}">
+        <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="header-logo" alt="logo" >
+        </a>
+    </div>
+		
+    <div class="container">
+        <div class="section">
+            <h1>Your Feedback is Important</h1>
+        </div>
+		
+        <div class="section">
+            <h2>Give your rating</h2>
+            <div class="stars">
+                <span class="star" onclick="rate(1)">&#9733;</span>
+                <span class="star" onclick="rate(2)">&#9733;</span>
+                <span class="star" onclick="rate(3)">&#9733;</span>
+                <span class="star" onclick="rate(4)">&#9733;</span>
+                <span class="star" onclick="rate(5)">&#9733;</span>
+            </div>
+        </div>
+		
+        <div class="section">
+            <textarea readonly>Marvin McKinney 3&#9733;
+
+"Empower your community with this seamless crime reporting app, report incidents swiftly and securely, ensuring a safer neighborhood for all."
+            </textarea>
+            <textarea readonly>Floyd Miles 4.5&#9733;
+
+"Essential for community safety! This crime reporting app is intuitive and responsive. Report incidents effortlessly and securely. A must-have tool!"     
+            </textarea>
+            <button class="button">Enter your feedback here...</button>
+        </div>
+        <div class="section">
+            <textarea placeholder="Enter text here..."></textarea>
+            <button class="bottom-square-buttons" onclick="submitFeedback()">Submit</button>
+        </div>
+    </div>
+
+        <div class ="footer-buttons">
+            <a href="{{url_for('auth.home')}}">
+            <button class="bottom-round-buttons" id="home-button"><i class="fas fa-home"></i></button>
+            </a>
+            <button class="bottom-round-buttons" id="refresh-button"><i class="fas fa-sync-alt"></i></button>
+        </div>
+	
+</body>
+</html>

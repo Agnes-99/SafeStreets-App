@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Shared.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Home.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{{ url_for('static', filename='JavaScript/Shared.js') }}" defer></script>
+
+</head>
+<body>
+
+     <div class="header">
+            <!--Hamburger Menu-->
+             <!--Hamburger Menu-->
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+            <i class="fas fa-bars"></i> 
+            </button>
+
+            <nav id="sidebar-menu" class="sidebar-menu">
+                <button class="close-button" aria-label="Close menu">&times;
+                </button>
+                <ul>
+                    <li><a href="{{url_for('auth.account', user_id=user_id)}}">Account</a></li>
+                    <li><a href="{{url_for('auth.home')}}">Home</a></li>
+                    <li><a href="{{url_for('auth.report')}}">Report</a></li>
+                    <li><a href="{{url_for('auth.popup')}}">Notifications</a></li>
+                    <li><a href="{{url_for('auth.emergency')}}">Helplines</a></li>
+                    <li><a href="{{url_for('auth.about')}}">About Us</a></li>
+                    <li><a href="{{url_for('auth.userfeed')}}">Userfeed</a></li>
+                    <li><a href="{{url_for('auth.feedback')}}">Feedback</a><li>
+
+                </ul>
+                {% if session.get("username")%}
+               <a href="{{url_for('auth.logout')}}">Logout</a>
+                {% endif%}
+            </nav>
+            <!--Logo-->
+            <a href="{{url_for('auth.home')}}">
+            <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="header-logo" alt="logo" >
+            </a>
+        </div>
+
+        <div id="grid">
+
+            <a href="{{url_for('auth.popup')}}">
+            <div class="icon-button-container">
+                 <i class="fas fa-triangle-exclamation"></i>
+                 <button class="button-label">Reports</button>
+             </div>
+            </a>
+
+            <a href="{{url_for('auth.emergency')}}">
+              <div class="icon-button-container">
+                 <i class="fas fa-address-book"></i>
+                 <button class="button-label">Emergency<br>Contacts</button>
+             </div>
+            </a>
+
+            <a href="{{url_for('auth.userfeed')}}">
+              <div class="icon-button-container">
+                 <i class="fas fa-comments"></i>
+                 <button class="button-label">Userfeed</button>
+             </div>
+            </a>
+
+            <a href="{{url_for('auth.about')}}">
+              <div class="icon-button-container">
+                 <i class="fas fa-info-circle"></i>
+                 <button class="button-label">About</button>
+             </div>
+            </a>
+        </div>
+    
+        <div id="container">
+        <a href="{{url_for('auth.account')}}">
+             <button id="your-reports-button"> 
+            Track your Reports
+            </button>
+        </a>
+
+        <a href="{{url_for('auth.report')}}">
+            <button id="report-button">
+             REPORT
+            </button>
+        </a>
+        </div>
+</body>
+</html>

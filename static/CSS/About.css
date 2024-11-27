@@ -1,0 +1,31 @@
+
+	.page-container{
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	height: 100%;
+
+}
+#contents{
+	text-align: center;
+	padding: 20px;
+
+}
+#info{
+	margin-top: 20px;
+}
+
+h1{
+	margin-bottom: 20px;
+
+}
+.about-image{
+	margin-top: 40px;
+}
+
+.about-image img {
+	width: 40%;
+	height: auto;
+	border-radius: 8px;
+	
+

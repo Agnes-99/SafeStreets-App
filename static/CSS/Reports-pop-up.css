@@ -1,0 +1,115 @@
+
+.content {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    color: white ;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.filters, .search-bar {
+    margin-bottom: 20px;
+}
+
+.filters label{
+    color: white;
+}
+.filters label, .search-bar input, .search-bar button {
+    margin-right: 10px;
+}
+
+.filters select, .filters input, .search-bar input, .search-bar button {
+    padding: 5px;
+    border: 2px solid #f39c12;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s;
+    width: 70px;
+}
+
+.search-bar button:hover {
+     background-color: green;
+    transform: scale(1.05);
+}
+
+.report-container {
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    border: 2px solid white;
+    list-style: none;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: auto;
+}
+
+#active-crime{
+    background-color: #FF2E00;
+}
+
+#beware-crime{
+    background-color: #fd5b0a;
+}
+
+#post-crime{
+    background-color: #Fc8c0f;
+}
+
+.report-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white; 
+    margin-bottom: 5px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.report-date {
+    font-size: 0.9em;
+    color: white;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.report-address {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.report-description {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #333;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.report-details {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #333;
+}

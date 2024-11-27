@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop Up Reports</title>
+	 <link rel="stylesheet" href="{{url_for('static', filename='CSS/Shared.css')}}"/>   
+     <link rel="stylesheet" href="{{url_for('static', filename='CSS/Reports-pop-up.css')}}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <script src="{{url_for('static', filename='JavaScript/Shared.js')}}" defer></script>
+<script src="{{url_for('static', filename='JavaScript/Reports-pop-up.js')}}" defer></script>
+
+</head>
+
+<body>
+    <div class="header">
+        <!--Hamburger Menu-->
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+        <i class="fas fa-bars"></i> 
+        </button>
+
+        <nav id="sidebar-menu" class="sidebar-menu">
+            <button class="close-button" aria-label="Close menu">&times;
+            </button>
+            <ul> 
+                <li><a href="{{url_for('auth.account')}}">Account</a></li>
+                <li><a href="{{url_for('auth.home')}}">Home</a></li>
+                <li><a href="{{url_for('auth.report')}}">Report</a></li>
+                <li><a href="{{url_for('auth.popup')}}">Notifications</a></li>
+                <li><a href="{{url_for('auth.emergency')}}">Helplines</a></li>
+                <li><a href="{{url_for('auth.about')}}">About Us</a></li>
+                <li><a href="{{url_for('auth.userfeed')}}">Userfeed</a></li>
+                <li><a href="{{url_for('auth.feedback')}}">Feedback</a><li>
+
+            </ul>
+            {% if session.get("username")%}
+           <a href="{{url_for('auth.logout')}}">Logout</a>
+            {% endif%}
+        </nav>
+        <!--Logo-->
+        <a href="{{url_for('auth.home')}}">
+        <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="header-logo" alt="logo" >
+        </a>
+    </div>
+
+    <div class="content">
+
+         <h1>Crime Notifications</h1> 
+
+      <div class="filters">
+        <label for="crime-type">Filter by Crime Type:</label>
+        <select id="crime-type">
+            <option value="all">All</option>
+            <option value="burglary">Burglary</option>
+            <option value="theft">Theft</option>
+            <option value="assault">Assault</option>
+            <option value="vandalism">Vandalism</option>
+            <option value="robbery">Robbery</option>
+            <option value="fraud">Fraud</option>
+            <option value="murder">Murder</option>
+            <option value="kidnapping">Kidnapping</option>
+            <option value="arson">Arson</option>
+            <option value="cybercrime">Cybercrime</option>
+        </select>
+
+        <label for="location">Filter by Location:</label>
+        <input type="text" id="location" placeholder="Enter suburb or city">
+       </div>
+
+       <div class="search-bar">
+        <input type="text" id="search" placeholder="Search notifications...">
+        <button onclick="searchNotifications()">Search</button>
+       </div>
+
+        <ul class="report-list">
+        <li class="report-container" id="active-crime">
+            <span class="report-title">Active Crime: Burglary</span>
+            <span class="report-date">July 30, 2024 05:18</span>
+            <br><br><br>
+            <span class="report-address">123 Main Road, Greenstone Hill, Edenvale, 1609</span><br><br>
+            <span class="report-description">A burglary was reported in this area. Please stay vigilant and secure your property.</span><br>
+            <strong>Suspected Method:</strong> Forced entry<br>
+             <strong>Involved Vehicles:</strong> None reported<br>
+             <strong>Police Contact:</strong> 011-123-4567
+        </li>
+		
+        
+        <li class="report-container" id="beware-crime">
+            <span class="report-title">Beware: Theft</span>
+            <span class="report-date">June 04, 2024 21:42</span><br><br><br>
+            <span class="report-address orange">456 Oak Avenue, Bryanston, Johannesburg, 2191</span><br><br>
+            <span class="report-description">Suspicious activity has been noted. Be cautious and report any unusual behavior to the authorities.</span><br>
+            <strong>Suspected Time:</strong> Late evening<br>
+            <strong>Witnesses:</strong> None identified<br>
+            <strong>Police Contact:</strong> 011-789-4561
+        </li>
+		
+        <li class="report-container" id="post-crime">
+            <span class="report-title">Post Crime: Assault</span>
+            <span class="report-date">Mar 20, 2024 23:14</span><br><br><br>
+            <span class="report-address yellow">789 Pine Street, Cape Town Central, Cape Town, 8001</span><br><br>
+            <span class="report-description">An assault occurred in this area. Stay alert and avoid the area if possible.</span><br>
+            <strong>Suspect Description:</strong> Male, approximately 30 years old<br>
+            <strong>Weapon Used:</strong> None reported<br>
+            <strong>Police Contact:</strong> 021-456-7890
+        </li>
+        </div>
+		
+       <div class ="footer-buttons">
+        <a href="{{url_for('auth.home')}}">
+            <button class="bottom-round-buttons" id="home-button" aria-label="to homepage"><i class="fas fa-home"></i></button>
+        </a>
+            <button class="bottom-round-buttons" id="refresh-button" aria-label="refresh"><i class="fas fa-sync-alt" ></i></button>
+        </div>     
+   
+</body>
+</html>
