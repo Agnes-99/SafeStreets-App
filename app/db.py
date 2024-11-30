@@ -200,7 +200,7 @@ def update_likes(conn, post_id):
             UPDATE Posts SET likes = likes + 1 WHERE post_id = ?
             ''',(post_id,))
         conn.commit()
-        print("Likes updated successfully")
+        print("Likes updated successfully.")
     except sqlite3.Error as e:
         print(f"Error updating likes: {e}")
     finally:
