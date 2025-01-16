@@ -1,7 +1,6 @@
 from flask import Flask
 import os
 from .routes import auth 
-from dashboard import create_dashboard
 
 def create_app ():
     app = Flask(__name__, static_folder="../static", template_folder="../templates")
@@ -10,8 +9,8 @@ def create_app ():
     app.config["ALLOWED_EXTENSIONS"] = {'png','jpg','jpeg','gif','mp4','avi','mov','ogg','wav','mp3'}
     app.secret_key ="Apples&Bananas"
 
+    from .routes import auth
     app.register_blueprint(auth)
-    create_dashboard(app)# intergrates Dash with Flask
 
     #initialize database 
     from app.db import create_connection, create_tables, close_connection

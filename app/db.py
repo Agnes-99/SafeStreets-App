@@ -107,6 +107,20 @@ def create_tables(conn):
         )
         ''')
 
+        cur.execute('''
+        CREATE TABLE IF NOT EXISTS rsa_crime_statistics(
+            
+            crime_category TEXT,
+            april2020_june2020 INTEGER,
+            april2021_june2021 INTEGER,
+            april2022_june2022 INTEGER,
+            april2023_june2023 INTEGER,
+            april2024_june2024 INTEGER,
+            count_diff INTEGER,
+            percentage_change REAL
+            )
+        ''')
+
         conn.commit()
         print("Tables created successfully.")
 
@@ -259,6 +273,37 @@ def delete_comment_db(conn, comment_id):
         print("Comment deleted successfully")
     except sqlite3.Error as e:
         print(f"Error deleting comment: {e}")
+    finally:
+        cur.close() if cur else None
+
+#Function to get stats
+def get_crime_stats_db(conn):
+    cur = None
+    try:
+        cur = conn.cursor()
+        cur.execute('''
+        SELECT * FROM rsa_crime_statistics
+        ''')
+        rows = cur.fetchall()
+        print(f"Crime stats retrived successfully")
+        return rows
+    except sqlite3.Error as e :
+        print(f"Error retrieving crime stats: {e}")
+    finally:
+        cur.close() if cur else None
+
+def plot_png_db(conn):
+    cur = None
+    try:
+        cur = conn.cursor()
+        cur.execute('''
+        SELECT crime_category, april2020_june2020, april2021_june2021, april2022_june2022, april2023_june2023, april2024_june2024 FROM rsa_crime_statistics
+        ''')
+        rows = cur.fetchall()
+        print(f"Crime stats retrived successfully")
+        return rows
+    except sqlite3.Error as e :
+        print(f"Error retrieving crime stats: {e}")
     finally:
         cur.close() if cur else None
 

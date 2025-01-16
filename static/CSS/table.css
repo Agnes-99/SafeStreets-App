@@ -1,0 +1,129 @@
+
+body {
+    font-family: 'Roboto', sans-serif; 
+    
+    color: #333; 
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #0056b3; 
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+.data-section, .plot-section {
+    margin-bottom: 50px;
+}
+
+.data-section h2, .plot-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #0056b3; 
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+.table-container {
+    overflow-x: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 1rem;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-weight: 400;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.1rem; 
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+tr:hover td {
+    background-color: #f1f1f1;
+}
+
+.plot-container {
+    text-align: center;
+}
+
+.plot-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-top: 20px;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1rem;
+    color: #666;
+    padding: 20px;
+    background-color: #f1f1f1; 
+    border-top: 1px solid #ddd;
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2rem; 
+    }
+
+    .data-section h2, .plot-section h2 {
+        font-size: 1.6rem; 
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 0.9rem; 
+    }
+
+    .plot-image {
+        width: 100%;
+    }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Shared.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/table.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{{ url_for('static', filename='JavaScript/Shared.js') }}" defer></script>
+
+</head>
+<body>
+
+    
+    <div class="header">
+        <!--Hamburger Menu-->
+         <!--Hamburger Menu-->
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+        <i class="fas fa-bars"></i> 
+        </button>
+
+        <nav id="sidebar-menu" class="sidebar-menu">
+            <button class="close-button" aria-label="Close menu">&times;
+            </button>
+            <ul>
+                <li><a href="{{url_for('auth.account', user_id=user_id)}}">Account</a></li>
+                <li><a href="{{url_for('auth.home')}}">Home</a></li>
+                <li><a href="{{url_for('auth.report')}}">Report</a></li>
+                <li><a href="{{url_for('auth.popup')}}">Notifications</a></li>
+                <li><a href="{{url_for('auth.emergency')}}">Helplines</a></li>
+                <li><a href="{{url_for('auth.about')}}">About Us</a></li>
+                <li><a href="{{url_for('auth.userfeed')}}">Userfeed</a></li>
+                <li><a href="{{url_for('auth.feedback')}}">Feedback</a><li>
+
+            </ul>
+            {% if session.get("username")%}
+           <a href="{{url_for('auth.logout')}}">Logout</a>
+            {% endif%}
+        </nav>
+        <!--Logo-->
+        <a href="{{url_for('auth.home')}}">
+        <img src="{{url_for('static', filename='Images/SafestreetsLogo.JPG')}}" id="header-logo" alt="logo" >
+        </a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Republic of South Africa: Crime Statistics</h1>
+        </header>
+
+        <!-- Data Table -->
+        <section class="data-section">
+            <h2>Crime Data Table</h2>
+            <div class="table-container">
+                {{ table_html|safe }}
+            </div>
+        </section>
+
+        <!-- Plot -->
+        <section class="plot-section">
+            <h2>Crime Trends</h2>
+            <div class="plot-container">
+                <img src="/plot.png" alt="Crime Trends Plot" class="plot-image">
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Republic of South Africa Crime Data Dashboard</p>
+        </footer>
+    </div>
+</body>
+</html>

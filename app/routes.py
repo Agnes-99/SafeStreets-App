@@ -1,5 +1,5 @@
-from flask import Blueprint, request, redirect, url_for,render_template, flash,session, current_app,jsonify
-from .db import create_connection, insert_user, close_connection,insert_report,generate_report_id, get_posts_and_comments, update_likes, insert_post,insert_comment, delete_comment_db, delete_post_db
+from flask import Blueprint, request, redirect, url_for,render_template, flash,session, current_app,jsonify, send_file
+from .db import create_connection, insert_user, close_connection,insert_report,generate_report_id, get_posts_and_comments, update_likes, insert_post,insert_comment, delete_comment_db, delete_post_db, get_crime_stats_db, plot_png_db
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import os
@@ -10,7 +10,12 @@ import datetime
 import sqlite3
 import base64
 import re
-from dashboard import create_dashboard 
+import pandas as pd
+import io
+import matplotlib
+import matplotlib.pyplot as plt
+
+
 
 auth = Blueprint("auth",__name__)
 
@@ -311,6 +316,53 @@ def account():
     conn.close()
     return render_template("Account.html", user = user, reports = reports)
 
-@auth.route('/dashboard')
-def dashboard():
-    return render_template('dashboard_outer.html')
+@auth.route("/stats")
+def getStats():
+
+    username = session["username"]
+    if "username" not in session:
+        flash("You need to log in first")
+        return redirect(url_for("auth.login"))
+    conn = create_connection(current_app.config["DATABASE"])
+
+    #fetch information
+    rows = get_crime_stats_db(conn)
+    df =  pd.DataFrame( rows, columns =["crime_category", "april2020_june2020", "april2021_june2021",
+                                     "april2022_june2022", "april2023_june2023", "april2024_june2024",
+                                     "count_diff", "percentage_change"])
+
+    table_html =df.to_html(classes ="table table-striped", index = False)
+    return render_template("table.html", table_html=table_html)
+
+@auth.route("/plot.png")
+def plot_png():
+     
+    username = session["username"]
+    if "username" not in session:
+        flash("You need to log in first")
+        return redirect(url_for("auth.login"))
+    
+    conn = create_connection(current_app.config["DATABASE"])
+    rows = plot_png_db(conn)
+
+    df = pd.DataFrame(rows, columns=["crime_category", "april2020_june2020", "april2021_june2021",
+                                     "april2022_june2022", "april2023_june2023", "april2024_june2024"])
+
+    # Limit to the first 5 crime categories for less clutter
+    df_subset = df.head(5)  
+    plt.figure(figsize =(10, 6))
+    for column in df_subset.columns[1:]:
+        plt.plot(df_subset["crime_category"], df_subset[column], label=column)
+    
+    plt.title("Crime Statistics Over Time : Top 5")
+    plt.xlabel("Crime Category")
+    plt.ylabel("Incidents")
+    plt.legend()
+    plt.tight_layout()
+
+    img = io.BytesIO()
+    plt.savefig(img, format ="png")
+    img.seek(0)
+    return send_file(img, mimetype="image/png")
+
+    
