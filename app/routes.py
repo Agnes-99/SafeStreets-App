@@ -14,9 +14,6 @@ import pandas as pd
 import io
 import matplotlib
 import matplotlib.pyplot as plt
-
-
-
 auth = Blueprint("auth",__name__)
 
 
