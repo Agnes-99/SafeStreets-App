@@ -1,32 +1,110 @@
-# Crime Reporting App 🚨
+# Crime Reporting App 🚨  
+(Group Project)
+Welcome to **SafeStreets**, a community-focused app that uses technology to enhance public safety. With a user-friendly interface, this platform makes it easy to report crimes, stay updated on incidents nearby and empower communities with actionable insights. Whether you're reporting a petty theft or a serious crime, **SafeStreets** aims to foster safer neighborhoods by enabling faster responses and creating awareness.  
 
-Welcome to the **SafeStreets App**, a project aimed at helping communities stay safer by providing a platform to report crimes and incidents. Whether it's a minor theft or a major crime, this app helps to bring awareness and gives authorities a tool for quicker responses. As a student project, it’s an effort to leverage technology to make a real-world impact.
+This is a student-driven initiative, showcasing how innovative solutions can make a real-world impact.  
 
-## Features 🌟
+---
 
-- **Report Crimes**: Quickly submit crime reports with details like location, type, description, and date. 📝
-- **Crime Tracking**: View real-time crime reports in your area, with incident types and locations plotted on an interactive map. 🗺️
-- **Real-time Updates**: Get notified about new reports, updates, or investigations near you. 🔔
-- **User Profiles**: Manage your reports and keep track of incidents you’ve reported or viewed. 👤
-- **Map Integration**: See all the crime reports plotted on an easy-to-navigate map. 🗺️📍
-- **Data Visualization**: Visualize crime trends, hotspots, and statistics with interactive charts and graphs. 📊📈
-- **Media Reporting**: Attach images, audio, and video files to your reports, so authorities can get as much context as possible. 🎥🎤
+## 🌟 Features  
 
-## Installation 🛠️
+### 🚨 **Crime Reporting**  
+Submit crime reports quickly by filling in crucial details such as:  
+- Location  
+- Type of crime  
+- Description  
+- Date and time  
 
-### Prerequisites
+### 🗺️ **Interactive Crime Maps**  
+Visualize crime reports on an intuitive map interface.  
+- View locations of incidents in real-time.  
+- Filter reports by type, severity, or time frame.  
 
-- Python 3.x 🐍
-- Flask 🌐
-- Database (SQLite) 🗄️
-- Virtual Environment (recommended) 💻
-- **Matplotlib** for data visualization 📊
-- **Flask-Uploads** (for handling media uploads) 🎥🎤
+### 🔔 **Real-Time Notifications**  
+Stay up to date with:  
+- Alerts about incidents in your area.  
+- Updates on ongoing investigations.  
 
-### Setup Instructions 📋
+### 👤 **User Profiles**  
+Personalize your experience:  
+- Manage your submitted reports.  
+- Track crimes or incidents you’ve viewed or flagged.  
 
-1. **Clone the Repository**  
-   Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com/yourusername/crime-reporting-app.git
-   cd crime-reporting-app
+### 📊 **Data Insights and Visualization**  
+Gain deeper insights with interactive charts:  
+- Analyze crime trends over time.  
+- Identify hotspots using statistical data.  
+
+### 🎥 **Media Uploads**  
+Enhance reports with:  
+- Images 📷  
+- Videos 🎥  
+- Audio recordings 🎤  
+
+This provides additional context, helping authorities respond effectively.  
+
+---
+
+## 🛠️ Installation  
+
+### Prerequisites  
+
+Before getting started, ensure you have the following installed on your system:  
+
+- **Python 3.x** 🐍  
+- **Flask Framework** 🌐  
+- **SQLite** 🗄️ for database storage  
+- Virtual Environment (highly recommended) 💻  
+- **Matplotlib** 📊 for generating charts and graphs  
+- **Flask-Uploads** 🎥 for managing media files  
+
+---
+
+### Screenshots
+Login
+![Screenshot Description](./static/Images/screenshots/login.png)
+Register
+![Screenshot Description](./static/Images/screenshots/register.png)
+Home
+![Screenshot Description](./static/Images/screenshots/home.png)
+Account
+![Screenshot Description](./static/Images/screenshots/account.png)
+Notifications
+![Screenshot Description](./static/Images/screenshots/notifications.png)
+Report
+![Screenshot Description](./static/Images/screenshots/report.png)
+Confirm Report
+![Screenshot Description](./static/Images/screenshots/confirm.png)
+Dashboard
+![Screenshot Description](./static/Images/screenshots/stats1.png)
+![alt text](./static/Images/screenshots/stats2.png)
+
+## 🌐 Live Demo
+
+Check out the live version of my portfolio: [Your Portfolio URL](#)
+
+---
+
+## 🤝 Contributing
+
+I’m always open to suggestions and feedback! If you have ideas to improve the website:
+
+1. Fork the repository.
+2. Create a new branch.
+3. Submit a pull request with your enhancements.
+
+---
+
+## 📩 Contact Me
+
+Feel free to connect with me via:
+
+- **Email**: agnesmabusela12@gmail.com  
+- **LinkedIn**: [Agnes Mabusela](https://www.linkedin.com/in/agnes-mabusela)  
+- **GitHub**: [Agnes-99](https://github.com/Agnes-99)
+
+---
+
+## 🖋️ License
+
+This project is licensed under the **MIT License**. Feel free to use, modify, and distribute this project as you see fit.
